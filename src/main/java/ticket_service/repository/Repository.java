@@ -1,7 +1,7 @@
 package ticket_service.repository;
 
-import ticket_service.models.Model;
-import ticket_service.models.ObjectId;
+import ticket_service.model.Model;
+import ticket_service.model.ObjectId;
 
 public interface Repository<M extends Model> {
   public void insertOne(M model);

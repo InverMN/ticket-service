@@ -3,8 +3,8 @@ package ticket_service.repository;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import ticket_service.models.Model;
-import ticket_service.models.ObjectId;
+import ticket_service.model.Model;
+import ticket_service.model.ObjectId;
 
 public abstract class RepositoryImpl<M extends Model> implements Repository<M> {
   private ArrayList<M> models = new ArrayList<M>();

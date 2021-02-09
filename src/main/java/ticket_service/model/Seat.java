@@ -1,4 +1,4 @@
-package ticket_service.models;
+package ticket_service.model;
 
 public class Seat extends ModelImpl {
 

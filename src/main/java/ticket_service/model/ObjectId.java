@@ -1,4 +1,4 @@
-package ticket_service.models;
+package ticket_service.model;
 
 import java.util.UUID;
 
