@@ -10,5 +10,6 @@
         "**/gradlew": true,
         "**/gradlew.bat": true
     },
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "editor.tabSize": 2
 }
