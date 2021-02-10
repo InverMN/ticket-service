@@ -35,11 +35,8 @@ public abstract class RepositoryImpl<M extends Model> implements Repository<M> {
   }
 
   @Override
-  public M[] findAll() {
-    var modelArray = (M[]) new Object[models.size()];
-    for (int i = 0; i < models.size(); i++)
-      modelArray[i] = models.get(i);
-    return modelArray;
+  public ArrayList<M> findAll() {
+    return models;
   }
 
   @Override
