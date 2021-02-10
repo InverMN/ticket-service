@@ -3,12 +3,52 @@
 */
 package ticket_service;
 
+
+import ticket_service.cli.EventCli;
+import ticket_service.cli.ReservationCli;
+import ticket_service.cli.SeatCli;
+
+import java.util.Scanner;
+
 public class App {
-  public String getGreeting() {
-    return "Hello world?";
-  }
-  
+  private static SeatCli seatCli = new SeatCli();
+  private static EventCli eventCli = new EventCli();
+  private static ReservationCli reservationCli = new ReservationCli();
+
   public static void main(String[] args) {
-    System.out.println(new App().getGreeting());
+    listenToCommands();
+
   }
+
+  private static void listenToCommands(){
+    Scanner scanner = new Scanner(System.in);
+    while(true) {
+      String command = scanner.nextLine();
+      executeCommand(command);
+    }
+  }
+
+  private static void executeCommand(String command) {
+    String[] commandFragments = command.split("\\s+");
+
+    switch (commandFragments[0]) {
+      case "seat":
+        seatCli.execute(commandFragments);
+        break;
+      case "event":
+        eventCli.execute(commandFragments);
+        break;
+      case "reservation":
+        reservationCli.execute(commandFragments);
+        break;
+
+      default:
+        printCommandNotFound();
+    }
+  }
+
+  public static void printCommandNotFound(){
+    System.out.println("Command not found");
+  }
+
 }

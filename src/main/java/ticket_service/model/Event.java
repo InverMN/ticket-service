@@ -4,8 +4,9 @@ import java.math.BigDecimal;
 
 public class Event extends ModelImpl {
 
-  public Event(String name) {
+  public Event(String name, BigDecimal price) {
     this.name = name;
+    this.price = price;
   }
   
   private final String name;
