@@ -2,6 +2,7 @@ package ticket_service.model;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import com.opencsv.bean.CsvBindByPosition;
 
 public class Reservation extends ModelImpl {
 
@@ -21,11 +22,17 @@ public class Reservation extends ModelImpl {
     this.endTime = endTime;
   }
 
+  @CsvBindByPosition(position = 1)
   private final String personIdentifier;
+  @CsvBindByPosition(position = 2)
   private final ObjectId[] reservedSeats;
+  @CsvBindByPosition(position = 3)
   private final BigDecimal cost;
+  @CsvBindByPosition(position = 4)
   private final ObjectId event;
+  @CsvBindByPosition(position = 5)
   private ZonedDateTime startTime;
+  @CsvBindByPosition(position = 6)
   private ZonedDateTime endTime;
 
   public String getPersonIdentifier() {
