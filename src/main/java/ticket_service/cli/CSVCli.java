@@ -1,4 +1,5 @@
 package ticket_service.cli;
 
-public class CSVCli {
+public class CSVCli Cli{
+
 }

@@ -9,6 +9,4 @@ public interface Cli<T> {
     public void create(T object);
     public void remove(ObjectId id);
     public void printCommandNotFound();
-    public void csvSave();
-    public void csvLoad();
 }
