@@ -23,6 +23,10 @@ public class ReservationCli implements Cli<Reservation> {
             case "remove":
                 remove(new ObjectId(commandFragments[2]));
                 break;
+            case "load":
+                loadCsv();
+            case "save":
+                saveCsv();
             default:
                 printCommandNotFound();
         }
@@ -54,6 +58,14 @@ public class ReservationCli implements Cli<Reservation> {
     public void remove(ObjectId id){
         ReservationRepository.getInstance().deleteOneById(id);
         System.out.println("Deleted reservation");
+    }
+
+    @Override
+    public void loadCsv(){
+    }
+
+    @Override
+    public void saveCsv(){
     }
 
     @Override

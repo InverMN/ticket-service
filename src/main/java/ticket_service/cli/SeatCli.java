@@ -20,6 +20,10 @@ public class SeatCli implements Cli<Seat>{
             case "remove":
                 remove(new ObjectId(commandFragments[2]));
                 break;
+            case "load":
+                loadCsv();
+            case "save":
+                saveCsv();
             default:
                 printCommandNotFound();
         }
@@ -51,6 +55,14 @@ public class SeatCli implements Cli<Seat>{
     public void remove(ObjectId id){
         SeatRepository.getInstance().deleteOneById(id);
         System.out.println("Deleted seat");
+    }
+
+    @Override
+    public void loadCsv(){
+    }
+
+    @Override
+    public void saveCsv(){
     }
 
     @Override
