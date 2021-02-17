@@ -11,6 +11,11 @@ public class Event extends ModelImpl {
     this.name = name;
   }
 
+  public Event(String name, BigDecimal price) {
+    this.name = name;
+    this.price = price;
+  }
+
   @CsvBindByPosition(position = 1)
   private String name;
   @CsvBindByPosition(position = 2)
