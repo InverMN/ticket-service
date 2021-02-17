@@ -24,6 +24,10 @@ public class EventCli implements Cli<Event> {
             case "remove":
                 remove(new ObjectId(commandFragments[2]));
                 break;
+            case "load":
+                loadCsv();
+            case "save":
+                saveCsv();
             default:
                 printCommandNotFound();
         }
@@ -56,6 +60,15 @@ public class EventCli implements Cli<Event> {
         EventRepository.getInstance().deleteOneById(id);
         System.out.println("Deleted event");
     }
+
+    @Override
+    public void loadCsv(){
+    }
+
+    @Override
+    public void saveCsv(){
+    }
+
 
     @Override
     public void printCommandNotFound(){
