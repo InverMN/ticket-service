@@ -5,12 +5,14 @@ import com.opencsv.bean.CsvBindByPosition;
 
 public class Event extends ModelImpl {
 
+  public Event() {}
+
   public Event(String name) {
     this.name = name;
   }
 
   @CsvBindByPosition(position = 1)
-  private final String name;
+  private String name;
   @CsvBindByPosition(position = 2)
   private BigDecimal price;
 

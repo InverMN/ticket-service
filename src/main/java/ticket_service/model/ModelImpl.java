@@ -1,9 +1,11 @@
 package ticket_service.model;
 
-import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvCustomBindByPosition;
+
+import ticket_service.csv.ObjectIdConverter;
 
 abstract public class ModelImpl implements Model {
-  @CsvBindByPosition(position = 0)
+  @CsvCustomBindByPosition(converter = ObjectIdConverter.class, position = 0)
   private final ObjectId id = ObjectId.generate();
 
   @Override

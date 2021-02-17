@@ -4,15 +4,17 @@ import com.opencsv.bean.CsvBindByPosition;
 
 public class Seat extends ModelImpl {
 
+  public Seat() {}
+
   public Seat(String location, String label) {
     this.location = location;
     this.label = label;
   }
 
   @CsvBindByPosition(position = 1)
-  private final String location;
+  private String location;
   @CsvBindByPosition(position = 2)
-  private final String label;
+  private String label;
 
   public String getLocation() {
     return this.location;

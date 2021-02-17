@@ -3,8 +3,14 @@ package ticket_service.model;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvCustomBindByPosition;
+
+import ticket_service.csv.ObjectIdConverter;
+import ticket_service.csv.ZoneDateTimeConverter;
 
 public class Reservation extends ModelImpl {
+
+  public Reservation() {}
 
   public Reservation(
     String personIdentifier,
@@ -23,16 +29,16 @@ public class Reservation extends ModelImpl {
   }
 
   @CsvBindByPosition(position = 1)
-  private final String personIdentifier;
+  private String personIdentifier;
   @CsvBindByPosition(position = 2)
-  private final ObjectId[] reservedSeats;
+  private ObjectId[] reservedSeats;
   @CsvBindByPosition(position = 3)
-  private final BigDecimal cost;
-  @CsvBindByPosition(position = 4)
-  private final ObjectId event;
-  @CsvBindByPosition(position = 5)
+  private BigDecimal cost;
+  @CsvCustomBindByPosition(position = 4, converter = ObjectIdConverter.class)
+  private ObjectId event;
+  @CsvCustomBindByPosition(position = 5, converter = ZoneDateTimeConverter.class)
   private ZonedDateTime startTime;
-  @CsvBindByPosition(position = 6)
+  @CsvCustomBindByPosition(position = 6, converter = ZoneDateTimeConverter.class)
   private ZonedDateTime endTime;
 
   public String getPersonIdentifier() {

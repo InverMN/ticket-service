@@ -17,7 +17,7 @@ public class ObjectId {
     return this.id;
   }
 
-  protected ObjectId(String id) {
+  public ObjectId(String id) {
     this.id = id;
   }
 
