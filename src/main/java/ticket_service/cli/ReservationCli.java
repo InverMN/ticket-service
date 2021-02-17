@@ -1,7 +1,10 @@
 package ticket_service.cli;
 
+import ticket_service.csv.CsvFile;
+import ticket_service.model.Event;
 import ticket_service.model.ObjectId;
 import ticket_service.model.Reservation;
+import ticket_service.repository.EventRepository;
 import ticket_service.repository.ReservationRepository;
 
 import java.math.BigDecimal;
@@ -25,8 +28,10 @@ public class ReservationCli implements Cli<Reservation> {
                 break;
             case "load":
                 loadCsv();
+                break;
             case "save":
                 saveCsv();
+                break;
             default:
                 printCommandNotFound();
         }
@@ -62,10 +67,18 @@ public class ReservationCli implements Cli<Reservation> {
 
     @Override
     public void loadCsv(){
+        var repo = ReservationRepository.getInstance();
+        var csvFile = new CsvFile<Reservation>("./reservations.csv", repo, Reservation.class);
+        csvFile.read();
+        System.out.println("Loaded");
     }
 
     @Override
     public void saveCsv(){
+        var repo = ReservationRepository.getInstance();
+        var csvFile = new CsvFile<Reservation>("./reservations.csv", repo, Reservation.class);
+        csvFile.write();
+        System.out.println("Saved");
     }
 
     @Override

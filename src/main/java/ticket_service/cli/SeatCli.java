@@ -1,7 +1,11 @@
 package ticket_service.cli;
 
+import ticket_service.csv.CsvFile;
+import ticket_service.model.Event;
 import ticket_service.model.ObjectId;
+import ticket_service.model.Reservation;
 import ticket_service.model.Seat;
+import ticket_service.repository.ReservationRepository;
 import ticket_service.repository.SeatRepository;
 
 public class SeatCli implements Cli<Seat>{
@@ -22,8 +26,10 @@ public class SeatCli implements Cli<Seat>{
                 break;
             case "load":
                 loadCsv();
+                break;
             case "save":
                 saveCsv();
+                break;
             default:
                 printCommandNotFound();
         }
@@ -59,10 +65,18 @@ public class SeatCli implements Cli<Seat>{
 
     @Override
     public void loadCsv(){
+        var repo = SeatRepository.getInstance();
+        var csvFile = new CsvFile<Seat>("./seat.csv", repo, Seat.class);
+        csvFile.read();
+        System.out.println("Loaded");
     }
 
     @Override
     public void saveCsv(){
+        var repo = SeatRepository.getInstance();
+        var csvFile = new CsvFile<Seat>("./seat.csv", repo, Seat.class);
+        csvFile.write();
+        System.out.println("Saved");
     }
 
     @Override

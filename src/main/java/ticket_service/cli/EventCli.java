@@ -1,5 +1,6 @@
 package ticket_service.cli;
 
+import ticket_service.csv.CsvFile;
 import ticket_service.model.Event;
 import ticket_service.model.ObjectId;
 import ticket_service.model.Seat;
@@ -26,8 +27,10 @@ public class EventCli implements Cli<Event> {
                 break;
             case "load":
                 loadCsv();
+                break;
             case "save":
                 saveCsv();
+                break;
             default:
                 printCommandNotFound();
         }
@@ -63,10 +66,18 @@ public class EventCli implements Cli<Event> {
 
     @Override
     public void loadCsv(){
+        var repo = EventRepository.getInstance();
+        var csvFile = new CsvFile<Event>("./events.csv", repo, Event.class);
+        csvFile.read();
+        System.out.println("Loaded");
     }
 
     @Override
     public void saveCsv(){
+        var repo = EventRepository.getInstance();
+        var csvFile = new CsvFile<Event>("./events.csv", repo, Event.class);
+        csvFile.write();
+        System.out.println("Saved");
     }
 
 
